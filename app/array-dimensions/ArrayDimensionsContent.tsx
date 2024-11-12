@@ -4,23 +4,24 @@ import { useState, useRef, useEffect } from 'react'
 import * as THREE from 'three'
 import { Button } from "@/components/ui/button"
 
+type SceneRef = {
+  scene: THREE.Scene;
+  camera: THREE.PerspectiveCamera;
+  renderer: THREE.WebGLRenderer;
+  cubes: THREE.Group;
+  cleanup: () => void;
+}
+
 export default function ArrayDimensionsContent() {
   const [dimension, setDimension] = useState(3)
   const containerRef = useRef<HTMLDivElement>(null)
-  const sceneRef = useRef<{
-    scene: THREE.Scene;
-    camera: THREE.PerspectiveCamera;
-    renderer: THREE.WebGLRenderer;
-    cubes: THREE.Group;
-    controls: any;
-    cleanup: () => void;
-  }>()
+  const sceneRef = useRef<SceneRef>()
 
   const dimensionInfo = {
     1: "1D array: A simple list of elements",
     2: "2D array: A table or matrix of elements",
     3: "3D array: A cube of elements"
-  }
+  } as const
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -69,7 +70,6 @@ export default function ArrayDimensionsContent() {
         camera,
         renderer,
         cubes,
-        controls: null,
         cleanup: () => {
           renderer.dispose()
           containerRef.current?.removeChild(renderer.domElement)
