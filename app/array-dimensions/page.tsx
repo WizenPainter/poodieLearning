@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import ArrayDimensionsWrapper from './ArrayDimensionsWrapper'
+import ArrayDimensionsExtended from './ArrayDimensionsExtended'
 
 export default function ArrayDimensionsPage() {
   return (
@@ -11,6 +12,9 @@ export default function ArrayDimensionsPage() {
         </CardHeader>
         <CardContent>
           <ArrayDimensionsWrapper />
+        </CardContent>
+        <CardContent>
+          <ArrayDimensionsExtended />
         </CardContent>
       </Card>
     </div>
