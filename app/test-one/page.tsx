@@ -10,7 +10,7 @@ export default function Component() {
   const [input, setInput] = useState('1')
   const [output, setOutput] = useState('')
 
-  const generateStaircase = (direction) => {
+  const generateStaircase = (direction : number) => {
     const steps = 5
     let staircase = ''
 
@@ -29,11 +29,11 @@ export default function Component() {
     setOutput(staircase)
   }
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => { 
     e.preventDefault()
     generateStaircase(parseInt(input))
   }
